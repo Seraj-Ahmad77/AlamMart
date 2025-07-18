@@ -40,3 +40,7 @@ app.use((err, req, res, next) => {
     message: err.message || "Internal Server Error",
   });
 });
+
+app.get("/", (req, res) => {
+  res.send("AlamMart Backend is running 🚀");
+});
