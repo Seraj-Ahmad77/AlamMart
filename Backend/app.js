@@ -13,12 +13,23 @@ config({path:"./config/config.env"})
 export const app=express();
 
 
+// connectDB();
+// app.use(cors({
+//     origin:[process.env.ADMIN_URL,process.env.USER_URL],
+//     methods:["GET","POST","PUT","DELETE"],
+//     credentials:true,
+// }))
 connectDB();
+
 app.use(cors({
-    origin:[process.env.ADMIN_URL,process.env.USER_URL],
-    methods:["GET","POST","PUT","DELETE"],
-    credentials:true,
-}))
+  origin: [
+    "https://alam-mart-frontend.vercel.app",
+    "https://alam-mart-admin.vercel.app",    
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
+
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
