@@ -42,6 +42,8 @@ export const loginUser=catchAsyncError(async(req ,res ,next)=>{
 
 })
 export const registerUser =catchAsyncError(async(req ,res ,next)=>{
+    console.log("📦 Register request body:", req.body);
+
     const {name,email,password}=req.body;
 
     if(!email || !password || !name){
@@ -67,7 +69,8 @@ export const registerUser =catchAsyncError(async(req ,res ,next)=>{
         password:hashedpassword
     })
 
-    const token= createToken(userModel._id)
+    // const token= createToken(userModel._id)
+    const token= createToken(newUser._id)
 
 
     res.status(200).json({

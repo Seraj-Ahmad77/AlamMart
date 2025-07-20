@@ -13,7 +13,7 @@ config({path:"./config/config.env"})
 export const app=express();
 
 
-
+connectDB();
 app.use(cors({
     origin:[process.env.ADMIN_URL,process.env.USER_URL],
     methods:["GET","POST","PUT","DELETE"],
@@ -30,7 +30,7 @@ app.use("/api/cart",cartRouter)
 app.use("/api/order",orderRouter)
 
 
-connectDB();
+
 app.use(errormiddleware)
 // Global error handler
 app.use((err, req, res, next) => {
